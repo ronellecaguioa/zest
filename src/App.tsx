@@ -23,7 +23,7 @@ const App: React.FC = () => {
   useEffect(() => {
     fetchData(); // Avoid initial 5 second delay
     setInterval(fetchData, 5000);
-  }, [fetchedData]);
+  }, []);
 
   return (
     <div className="app">
@@ -32,8 +32,8 @@ const App: React.FC = () => {
           <Chart fetchedData={fetchedData} />
         </div>
         <div>
-          <Trending />
-          <Current />
+          <Trending fetchedData={fetchedData} />
+          <Current current={fetchedData[fetchedData.length - 1]} />
         </div>
       </main>
     </div>
