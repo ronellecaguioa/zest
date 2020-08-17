@@ -29,6 +29,7 @@
         "args": "none"
       }
     ],
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react/jsx-one-expression-per-line": "off"
   }
 }
