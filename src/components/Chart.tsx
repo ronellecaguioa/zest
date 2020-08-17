@@ -34,7 +34,6 @@ const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
         },
       ]}
       layout={{
-        title: 'Bitcoin Prices',
         autosize: true,
         xaxis: {
           nticks: 5,
