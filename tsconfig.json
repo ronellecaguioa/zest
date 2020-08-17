@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "es6",
+    "target": "ES5",
+    "jsx": "react",
+    "pretty": true,
+    "esModuleInterop": true
+  },
+  "include": ["./src/**/*"],
+}
