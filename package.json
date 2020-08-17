@@ -4,7 +4,11 @@
   "description": "Bitcoin tracker",
   "main": "index.tsx",
   "scripts": {
-    "test": "jest"
+    "start": "open public/index.html",
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "build": "NODE_ENV=production webpack",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
