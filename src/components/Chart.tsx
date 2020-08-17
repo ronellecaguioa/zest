@@ -38,10 +38,16 @@ const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
         autosize: true,
         xaxis: {
           nticks: 5,
+          title: {
+            text: 'Time',
+          },
         },
         yaxis: {
           range: [I, J],
           showline: true,
+          title: {
+            text: 'Value (USD)',
+          },
         },
       }}
       config={{
