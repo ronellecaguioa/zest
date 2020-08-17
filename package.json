@@ -1,0 +1,19 @@
+{
+  "name": "zest-bitcoin",
+  "version": "1.0.0",
+  "description": "Bitcoin tracker",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronellecaguioa/zest.git"
+  },
+  "author": "Ronelle Caguioa <ronelle.caguioa@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ronellecaguioa/zest/issues"
+  },
+  "homepage": "https://github.com/ronellecaguioa/zest#readme"
+}
