@@ -9,6 +9,8 @@ export interface ChartProps {
 const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
   const [yAxis, setYAxis] = useState<number[]>([]);
   const [xAxis, setXAxis] = useState<string[]>([]);
+  const [I, setI] = useState(0);
+  const [J, setJ] = useState(20000);
 
   // On new props, store fetchedData in local state
   useEffect(() => {
@@ -16,8 +18,13 @@ const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
     setXAxis(fetchedData.map(d => d.timestamp.toLocaleTimeString()));
   }, [fetchedData]);
 
+  const customAxis = () => {
+    setI(12300);
+    setJ(12400);
+  };
+
   return (
-    <div className="chart">
+    <div>
       <h2>Chart Component</h2>
       <Plot
         data={[
@@ -30,12 +37,23 @@ const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
         ]}
         layout={{
           title: 'Bitcoin Prices',
+          autosize: true,
           xaxis: {
             nticks: 5,
           },
-          yaxis: {},
+          yaxis: {
+            range: [I, J],
+          },
         }}
+        config={{
+          scrollZoom: true,
+          showLink: true,
+        }}
+        useResizeHandler
       />
+      <button onClick={customAxis} type="button">
+        set axis
+      </button>
     </div>
   );
 };

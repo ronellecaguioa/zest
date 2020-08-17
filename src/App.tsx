@@ -27,11 +27,14 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
+      <header>
+        <h1>Bitcoin Prices</h1>
+      </header>
       <main>
-        <div>
+        <div className="chart">
           <Chart fetchedData={fetchedData} />
         </div>
-        <div>
+        <div className="metrics">
           <Trending fetchedData={fetchedData} />
           <Current current={fetchedData[fetchedData.length - 1]} />
         </div>
