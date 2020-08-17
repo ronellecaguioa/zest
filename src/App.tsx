@@ -3,14 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Chart from './components/Chart';
 import Trending from './components/Trending';
 import Current from './components/Current';
+import { Data } from './types';
 import './stylesheets/index.scss';
-
-interface Data {
-  base: string;
-  currency: string;
-  amount: string;
-  timestamp: Date;
-}
 
 const App: React.FC = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
@@ -35,7 +29,7 @@ const App: React.FC = () => {
     <div className="app">
       <main>
         <div>
-          <Chart />
+          <Chart fetchedData={fetchedData} />
         </div>
         <div>
           <Trending />
