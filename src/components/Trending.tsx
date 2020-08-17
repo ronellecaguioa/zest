@@ -9,6 +9,24 @@ export interface TrendingProps {
 const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
   const [isTrending, setIsTrending] = useState<boolean | null>(null);
   const [trendVal, setTrendVal] = useState('');
+  const [min, setMin] = useState<Data | null>(null);
+  const [max, setMax] = useState<Data | null>(null);
+
+  const findMinAndMax = (data: Data[]) => {
+    data.forEach(dataPoint => {
+      const current = dataPoint.amount;
+
+      // Store min data point
+      if (!min || parseFloat(min.amount) > parseFloat(current)) {
+        setMin(dataPoint);
+      }
+
+      // Store max data point
+      if (!max || parseFloat(max.amount) < parseFloat(current)) {
+        setMax(dataPoint);
+      }
+    });
+  };
 
   const findTrend = (data: Data[]) => {
     // Use 'amount' property from each data point
@@ -27,14 +45,23 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
 
   useEffect(() => {
     findTrend(fetchedData);
+    findMinAndMax(fetchedData);
   }, [fetchedData]);
 
   return (
     <div className="trending">
       <h2>Trending {isTrending ? `UP ${trendVal}` : `DOWN ${trendVal}`}</h2>
       <div>
-        <p>High: _placeholder</p>
-        <p>Low: _placeholder</p>
+        <p>
+          {max
+            ? `High: $${max.amount} at ${max.timestamp.toLocaleTimeString()}`
+            : 'Loading'}{' '}
+        </p>
+        <p>
+          {min
+            ? `Low: $${min.amount} at ${min.timestamp.toLocaleTimeString()}`
+            : 'Loading'}{' '}
+        </p>
       </div>
     </div>
   );
