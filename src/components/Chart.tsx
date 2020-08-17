@@ -24,37 +24,33 @@ const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
   };
 
   return (
-    <div>
-      <h2>Chart Component</h2>
-      <Plot
-        data={[
-          {
-            x: xAxis,
-            y: yAxis,
-            type: 'scatter',
-            fill: 'tozeroy',
-          },
-        ]}
-        layout={{
-          title: 'Bitcoin Prices',
-          autosize: true,
-          xaxis: {
-            nticks: 5,
-          },
-          yaxis: {
-            range: [I, J],
-          },
-        }}
-        config={{
-          scrollZoom: true,
-          showLink: true,
-        }}
-        useResizeHandler
-      />
-      <button onClick={customAxis} type="button">
-        set axis
-      </button>
-    </div>
+    <Plot
+      data={[
+        {
+          x: xAxis,
+          y: yAxis,
+          type: 'scatter',
+          fill: 'tozeroy',
+        },
+      ]}
+      layout={{
+        title: 'Bitcoin Prices',
+        autosize: true,
+        xaxis: {
+          nticks: 5,
+        },
+        yaxis: {
+          range: [I, J],
+          showline: true,
+        },
+      }}
+      config={{
+        scrollZoom: true,
+        showLink: true,
+      }}
+      useResizeHandler
+      className="plot"
+    />
   );
 };
 

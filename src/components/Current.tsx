@@ -7,14 +7,21 @@ export interface CurrentProps {
 
 const Current: React.FC<CurrentProps> = ({ current }) => {
   return (
-    <div>
-      <h3>Current</h3>
+    <div className="current">
+      <h3>LAST</h3>
+      <hr />
       <div>
         {current ? (
           <>
-            <div>Base: {current.base}</div>
-            <div>Amount: ${current.amount}</div>
-            <div>Timestamp: {current.timestamp.toLocaleTimeString()}</div>
+            {/* <div>Base: {current.base}</div> */}
+            <div>
+              <span>Amount: </span>
+              <span>${current.amount}</span>
+            </div>
+            <div>
+              <span>Time: </span>
+              <span>{current.timestamp.toLocaleTimeString()}</span>
+            </div>
           </>
         ) : (
           <div>Loading</div>

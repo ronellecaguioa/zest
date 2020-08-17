@@ -1,0 +1,16 @@
+$zestorange: #f78e2e;
+$zestblue: #05122b;
+$zesttan: #c4a876;
+$black: #05132B;
+$boxshadow: 2px 2px 5px 2px rgba(150,150,150,1);
+$high: #00800080;
+$low: #e4383880;
+
+@mixin centerWithFlex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+

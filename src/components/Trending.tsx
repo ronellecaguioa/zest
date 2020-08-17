@@ -50,18 +50,27 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
 
   return (
     <div className="trending">
-      <h2>Trending {isTrending ? `UP ${trendVal}` : `DOWN ${trendVal}`}</h2>
-      <div>
-        <p>
-          {max
-            ? `High: $${max.amount} at ${max.timestamp.toLocaleTimeString()}`
-            : 'Loading'}{' '}
-        </p>
-        <p>
-          {min
-            ? `Low: $${min.amount} at ${min.timestamp.toLocaleTimeString()}`
-            : 'Loading'}{' '}
-        </p>
+      <h3 className={isTrending ? 'up' : 'down'}>
+        {isTrending ? `UP ${trendVal}` : `DOWN ${trendVal}`}
+      </h3>
+      <hr />
+      <div className="high-low">
+        <div className="high">
+          <h4>HIGH</h4>
+          <p>
+            {max
+              ? `$${max.amount} at ${max.timestamp.toLocaleTimeString()}`
+              : 'Loading'}
+          </p>
+        </div>
+        <div className="low">
+          <h4>LOW</h4>
+          <p>
+            {min
+              ? `$${min.amount} at ${min.timestamp.toLocaleTimeString()}`
+              : 'Loading'}
+          </p>
+        </div>
       </div>
     </div>
   );
