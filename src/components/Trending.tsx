@@ -58,7 +58,16 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
   return (
     <div className="trending">
       <h3 className={isTrending ? 'up' : 'down'}>
-        {isTrending ? `UP ${trendVal}` : `DOWN ${trendVal}`}
+        <img
+          className={isTrending ? 'up' : 'down'}
+          src={
+            isTrending
+              ? 'https://img.icons8.com/ios-glyphs/30/000000/sort-up.png'
+              : 'https://img.icons8.com/ios-glyphs/30/000000/sort-down.png'
+          }
+          alt="Trending arrow"
+        />
+        {isTrending ? ` +${trendVal}` : ` ${trendVal}`}
       </h3>
       <hr />
       <div className="high-low">
