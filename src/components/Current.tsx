@@ -13,7 +13,6 @@ const Current: React.FC<CurrentProps> = ({ current }) => {
       <div>
         {current ? (
           <>
-            {/* <div>Base: {current.base}</div> */}
             <div>
               <span>Amount: </span>
               <span>${current.amount}</span>
