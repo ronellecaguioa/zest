@@ -4,11 +4,15 @@ import Chart from './components/Chart';
 import Trending from './components/Trending';
 import Current from './components/Current';
 import { Data } from './types';
-import './stylesheets/index.scss';
+import './stylesheets/App.scss';
 
 const App: React.FC = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
 
+  /**
+   * Fetches bitcoin data from coinbase API and adds a timestamp to
+   * object to be used by children components
+   */
   const fetchData = () => {
     fetch('https://api.coinbase.com/v2/prices/BTC-USD/buy')
       .then(res => res.json())
@@ -16,7 +20,7 @@ const App: React.FC = () => {
         data.timestamp = new Date();
         setFetchedData(state => state.concat([data]));
       })
-      .catch(error => console.log('You have an error', error));
+      .catch(error => console.log('Error fetching data: ', error));
   };
 
   // On mount, fetches data from coinbase API every 5 seconds

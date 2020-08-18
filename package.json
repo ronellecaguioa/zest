@@ -7,7 +7,7 @@
     "start": "open public/index.html",
     "dev": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "test": "jest",
+    "test": "jest __tests__/src/*",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -21,14 +21,17 @@
   },
   "homepage": "https://github.com/ronellecaguioa/zest#readme",
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.10",
-    "@types/moment": "^2.13.0",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "@types/react-plotly.js": "^2.2.4",
+    "@types/regression": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
     "css-loader": "^4.2.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.7.0",
     "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-config-prettier": "^6.11.0",
@@ -38,6 +41,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "jest": "^26.4.0",
+    "jest-canvas-mock": "^2.2.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "sass-loader": "^9.0.3",
@@ -50,12 +54,23 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@types/regression": "^2.0.0",
-    "moment": "^2.27.0",
     "plotly.js": "^1.54.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-plotly.js": "^2.4.0",
     "regression": "^2.0.1"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "setupFiles": [
+      "<rootDir>/__tests__/setup/windowStub.js",
+      "<rootDir>/__tests__/setup/canvasStub.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(scss)$": "<rootDir>/__tests__/setup/scssStub.js"
+    }
   }
 }

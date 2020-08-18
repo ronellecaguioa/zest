@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import regression, { DataPoint } from 'regression';
 import { Data } from '../types';
+import '../stylesheets/Trending.scss';
 
 export interface TrendingProps {
   fetchedData: Data[];
@@ -12,6 +13,10 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
   const [min, setMin] = useState<Data | null>(null);
   const [max, setMax] = useState<Data | null>(null);
 
+  /**
+   * Helper function to store the min and max data points
+   * @param {Array} data All fetched data points
+   */
   const findMinAndMax = (data: Data[]) => {
     data.forEach(dataPoint => {
       const current = dataPoint.amount;
@@ -28,6 +33,10 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
     });
   };
 
+  /**
+   * Helper function to calculate trend using linear regression
+   * @param {Array} data All fetched data points
+   */
   const findTrend = (data: Data[]) => {
     // Use 'amount' property from each data point
     const tempList = data.map((c, i): DataPoint => [i, parseFloat(c.amount)]);
@@ -43,6 +52,7 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
     setTrendVal(slopeNum.toFixed(2));
   };
 
+  // Recalculate trend, min, and max everytime props is updated
   useEffect(() => {
     findTrend(fetchedData);
     findMinAndMax(fetchedData);
@@ -51,7 +61,16 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
   return (
     <div className="trending">
       <h3 className={isTrending ? 'up' : 'down'}>
-        {isTrending ? `UP ${trendVal}` : `DOWN ${trendVal}`}
+        <img
+          className={isTrending ? 'up' : 'down'}
+          src={
+            isTrending
+              ? 'https://img.icons8.com/ios-glyphs/30/000000/sort-up.png'
+              : 'https://img.icons8.com/ios-glyphs/30/000000/sort-down.png'
+          }
+          alt="Trending arrow"
+        />
+        {isTrending ? ` +${trendVal}` : ` ${trendVal}`}
       </h3>
       <hr />
       <div className="high-low">
@@ -59,7 +78,7 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
           <h4>HIGH</h4>
           <p>
             {max
-              ? `$${max.amount} at ${max.timestamp.toLocaleTimeString()}`
+              ? `$${max.amount.toLocaleString()} at ${max.timestamp.toLocaleTimeString()}`
               : 'Loading'}
           </p>
         </div>

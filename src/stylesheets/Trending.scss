@@ -1,0 +1,59 @@
+@import './constants.scss';
+
+// Trending
+.trending {
+  @include centerWithFlex($direction: column, $justify: flex-start);
+  transition: 0.2s;
+
+  &:hover {
+    background: #fff;
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 250%;
+  }
+
+  .up {
+    color: darkgreen;
+  }
+
+  .down {
+    color: darkred;
+  }
+
+  // Line Break
+  hr {
+    display: block;
+    height: 1px;
+    background: #afafaf;
+    border: none;
+    margin: 25px 0 30px;
+    align-self: stretch;
+  }
+
+  .high-low {
+    @include centerWithFlex($justify: space-between);
+
+    div {
+      @include centerWithFlex($direction: column);
+      padding: 10px;
+      text-align: center;
+
+      h4 {
+        margin-bottom: 15px;
+        text-decoration: underline;
+      }
+    }
+
+    .high {
+      background: $high;
+      margin-right: 5px;
+    }
+
+    .low {
+      background: $low;
+      margin-left: 5px;
+    }
+  }
+}

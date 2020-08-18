@@ -1,0 +1,40 @@
+@import './constants.scss';
+
+// Current
+.current {
+  transition: 0.2s;
+  @include centerWithFlex($direction: column, $justify: flex-start);
+
+  &:hover {
+    background: #fff;
+  }
+
+  h3 {
+    font-size: 225%;
+    margin: 15px auto 0;
+    letter-spacing: 1px;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    background: #afafaf;
+    border: none;
+    margin: 25px 0 30px;
+    align-self: stretch;
+  }
+
+  div {
+    font-size: 115%;
+    width: 90%;
+    margin: 0 auto 15px;
+
+    div {
+      @include centerWithFlex($justify: space-between);
+
+      .label {
+        font-weight: 600;
+      }
+    }
+  }
+}
