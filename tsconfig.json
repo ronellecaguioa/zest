@@ -7,5 +7,5 @@
     "pretty": true,
     "esModuleInterop": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./__tests__/**/*"],
 }

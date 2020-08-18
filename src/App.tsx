@@ -9,7 +9,10 @@ import './stylesheets/index.scss';
 const App: React.FC = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
 
-  // Fetched bitcoin data from coinbase API
+  /**
+   * Fetches bitcoin data from coinbase API and adds a timestamp to
+   * object to be used by children components
+   */
   const fetchData = () => {
     fetch('https://api.coinbase.com/v2/prices/BTC-USD/buy')
       .then(res => res.json())
@@ -17,7 +20,7 @@ const App: React.FC = () => {
         data.timestamp = new Date();
         setFetchedData(state => state.concat([data]));
       })
-      .catch(error => console.log('You have an error', error));
+      .catch(error => console.log('Error fetching data: ', error));
   };
 
   // On mount, fetches data from coinbase API every 5 seconds

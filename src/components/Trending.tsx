@@ -14,6 +14,7 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
 
   /**
    * Helper function to store the min and max data points
+   * @param {Array} data All fetched data points
    */
   const findMinAndMax = (data: Data[]) => {
     data.forEach(dataPoint => {
@@ -32,7 +33,8 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
   };
 
   /**
-   * Helper function to get a set trend using linear regression
+   * Helper function to calculate trend using linear regression
+   * @param {Array} data All fetched data points
    */
   const findTrend = (data: Data[]) => {
     // Use 'amount' property from each data point
@@ -49,7 +51,7 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
     setTrendVal(slopeNum.toFixed(2));
   };
 
-  // Recalculate trend, min, and max everytime data is updated
+  // Recalculate trend, min, and max everytime props is updated
   useEffect(() => {
     findTrend(fetchedData);
     findMinAndMax(fetchedData);
@@ -75,7 +77,7 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
           <h4>HIGH</h4>
           <p>
             {max
-              ? `$${max.amount} at ${max.timestamp.toLocaleTimeString()}`
+              ? `$${max.amount.toLocaleString()} at ${max.timestamp.toLocaleTimeString()}`
               : 'Loading'}
           </p>
         </div>

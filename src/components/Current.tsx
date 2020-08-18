@@ -6,7 +6,7 @@ export interface CurrentProps {
 }
 
 /**
- * Presentation component for display the latest data point
+ * Presentational component for display the latest data point
  */
 const Current: React.FC<CurrentProps> = ({ current }) => (
   <div className="current">
