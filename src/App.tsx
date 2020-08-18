@@ -9,6 +9,7 @@ import './stylesheets/index.scss';
 const App: React.FC = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
 
+  // Fetched bitcoin data from coinbase API
   const fetchData = () => {
     fetch('https://api.coinbase.com/v2/prices/BTC-USD/buy')
       .then(res => res.json())
