@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import regression, { DataPoint } from 'regression';
 import { Data } from '../types';
+import '../stylesheets/Trending.scss';
 
 export interface TrendingProps {
   fetchedData: Data[];

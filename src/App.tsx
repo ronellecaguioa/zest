@@ -4,7 +4,7 @@ import Chart from './components/Chart';
 import Trending from './components/Trending';
 import Current from './components/Current';
 import { Data } from './types';
-import './stylesheets/index.scss';
+import './stylesheets/App.scss';
 
 const App: React.FC = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);

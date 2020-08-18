@@ -1,5 +1,6 @@
 import React from 'react';
 import { Data } from '../types';
+import '../stylesheets/Current.scss';
 
 export interface CurrentProps {
   current?: Data;
@@ -16,11 +17,11 @@ const Current: React.FC<CurrentProps> = ({ current }) => (
       {current ? (
         <>
           <div>
-            <span>Amount: </span>
+            <span className="label">Amount: </span>
             <span>${current.amount}</span>
           </div>
           <div>
-            <span>Time: </span>
+            <span className="label">Now: </span>
             <span>{current.timestamp.toLocaleTimeString()}</span>
           </div>
         </>
