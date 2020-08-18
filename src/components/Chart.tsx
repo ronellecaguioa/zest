@@ -29,6 +29,11 @@ const Chart: React.FC<ChartProps> = ({ fetchedData }) => {
       ]}
       layout={{
         autosize: true,
+        font: {
+          color: 'black',
+          size: 15,
+          family: 'BlinkMacSystemFont',
+        },
         xaxis: {
           nticks: 5,
           title: {

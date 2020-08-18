@@ -18,7 +18,9 @@ const Current: React.FC<CurrentProps> = ({ current }) => (
         <>
           <div>
             <span className="label">Amount: </span>
-            <span>${current.amount}</span>
+            <span>
+              {current.amount} {current.currency}
+            </span>
           </div>
           <div>
             <span className="label">Now: </span>
