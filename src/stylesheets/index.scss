@@ -1,3 +1,173 @@
+@import './constants.scss';
+
+// Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: lightblue;
+  font-size: 1em;
+  font-family: system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    sans-serif;
+  background: #f4f4f4;
+  color: $black;
+}
+
+.app {
+  width: 80%;
+  height: 100vh;
+  margin: 0 auto;
+  padding-top: 50px;
+  @include centerWithFlex($direction: column, $justify: flex-start);
+
+  // Header
+  header {
+    text-align: center;
+    margin: 0 0 50px;
+
+    h1 {
+      font-size: 400%;
+      font-weight: 400;
+      letter-spacing: 4px;
+    }
+  }
+
+  // Main content
+  main {
+    flex: 1;
+    max-height: 100%;
+    width: 100%;
+    @include centerWithFlex;
+
+    // Chart
+    .chart {
+      flex: 1;
+      height: 100%;
+
+      .plot {
+        width: 100%;
+        height: 75%;
+        min-height: 525px;
+      }
+    }
+
+    // Metrics
+    .metrics {
+      height: 100%;
+      @include centerWithFlex($direction: column, $justify: flex-start);
+      margin: 25px;
+
+      .trending,
+      .current {
+        margin-bottom: 25px;
+        width: 300px;
+        height: 250px;
+        padding: 15px;
+        box-shadow: $boxshadow;
+        background: darken(#fff, 5%);
+        border-radius: 3px;
+      }
+
+      // Trending
+      .trending {
+        @include centerWithFlex($direction: column, $justify: flex-start);
+        transition: 0.2s;
+
+        &:hover {
+          background: #fff;
+        }
+
+        h3 {
+          margin-top: 10px;
+          font-size: 250%;
+        }
+
+        .up {
+          color: darkgreen;
+        }
+
+        .down {
+          color: darkred;
+        }
+
+        // Line Break
+        hr {
+          display: block;
+          height: 1px;
+          background: #afafaf;
+          border: none;
+          margin: 25px 0 30px;
+          align-self: stretch;
+        }
+
+        .high-low {
+          @include centerWithFlex($justify: space-between);
+
+          div {
+            @include centerWithFlex($direction: column);
+            padding: 10px;
+            text-align: center;
+
+            h4 {
+              margin-bottom: 15px;
+              text-decoration: underline;
+            }
+          }
+
+          .high {
+            background: $high;
+            margin-right: 5px;
+          }
+
+          .low {
+            background: $low;
+            margin-left: 5px;
+          }
+        }
+      }
+
+      // Current
+      .current {
+        transition: 0.2s;
+        @include centerWithFlex($direction: column, $justify: flex-start);
+
+        &:hover {
+          background: #fff;
+        }
+
+        h3 {
+          font-size: 225%;
+          margin: 15px auto 0;
+          letter-spacing: 1px;
+        }
+
+        hr {
+          display: block;
+          height: 1px;
+          background: #afafaf;
+          border: none;
+          margin: 25px 0 30px;
+          align-self: stretch;
+        }
+
+        div {
+          font-size: 115%;
+          width: 90%;
+          margin: 0 auto 15px;
+
+          div {
+            @include centerWithFlex($justify: space-between);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  body {
+    font-size: 1em;
+  }
 }
