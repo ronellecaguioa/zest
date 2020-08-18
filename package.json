@@ -7,7 +7,7 @@
     "start": "open public/index.html",
     "dev": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "test": "jest",
+    "test": "jest __tests__/src/**/*",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -41,6 +41,7 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "jest": "^26.4.0",
+    "jest-canvas-mock": "^2.2.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "sass-loader": "^9.0.3",
@@ -62,6 +63,10 @@
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
-    }
+    },
+    "setupFiles": [
+      "<rootDir>/__tests__/setup/windowMock.js",
+      "<rootDir>/__tests__/setup/canvasMock.js"
+    ]
   }
 }
