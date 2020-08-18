@@ -7,7 +7,7 @@
     "start": "open public/index.html",
     "dev": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "test": "jest __tests__/src/**/*",
+    "test": "jest __tests__/src/*",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -61,12 +61,16 @@
     "regression": "^2.0.1"
   },
   "jest": {
+    "verbose": true,
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
     "setupFiles": [
-      "<rootDir>/__tests__/setup/windowMock.js",
-      "<rootDir>/__tests__/setup/canvasMock.js"
-    ]
+      "<rootDir>/__tests__/setup/windowStub.js",
+      "<rootDir>/__tests__/setup/canvasStub.js",
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(scss)$": "<rootDir>/__tests__/setup/scssStub.js"
+    }
   }
 }
