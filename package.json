@@ -67,7 +67,7 @@
     },
     "setupFiles": [
       "<rootDir>/__tests__/setup/windowStub.js",
-      "<rootDir>/__tests__/setup/canvasStub.js",
+      "<rootDir>/__tests__/setup/canvasStub.js"
     ],
     "moduleNameMapper": {
       "^.+\\.(scss)$": "<rootDir>/__tests__/setup/scssStub.js"
