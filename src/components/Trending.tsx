@@ -12,6 +12,9 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
   const [min, setMin] = useState<Data | null>(null);
   const [max, setMax] = useState<Data | null>(null);
 
+  /**
+   * Helper function to store the min and max data points
+   */
   const findMinAndMax = (data: Data[]) => {
     data.forEach(dataPoint => {
       const current = dataPoint.amount;
@@ -28,6 +31,9 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
     });
   };
 
+  /**
+   * Helper function to get a set trend using linear regression
+   */
   const findTrend = (data: Data[]) => {
     // Use 'amount' property from each data point
     const tempList = data.map((c, i): DataPoint => [i, parseFloat(c.amount)]);
@@ -43,6 +49,7 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
     setTrendVal(slopeNum.toFixed(2));
   };
 
+  // Recalculate trend, min, and max everytime data is updated
   useEffect(() => {
     findTrend(fetchedData);
     findMinAndMax(fetchedData);
