@@ -1,29 +1,28 @@
-// import React from 'react';
-// import { configure, shallow } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
-// import Plot from 'react-plotly.js';
+import React from 'react';
+import { configure, shallow, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import 'jest-canvas-mock';
 
-// import Chart from '../../../src/components/Chart';
-// import { Data } from '../../../src/types';
+import Chart from '../../../src/components/Chart';
+import { Data } from '../../../src/types';
 
-// configure({ adapter: new Adapter() });
+jest.unmock('plotly.js');
+jest.unmock('../../../src/components/Chart');
 
-// describe('<Chart />', () => {
-//   const mockData: Data[] = [
-//     {
-//       amount: '12121.23',
-//       base: 'BTC',
-//       currency: 'USD',
-//       timestamp: new Date(),
-//     },
-//   ];
+configure({ adapter: new Adapter() });
 
-//   const wrapper = shallow(<Chart fetchedData={mockData} />);
-//
-// });
+describe('<Chart />', () => {
+  const mockData: Data[] = [
+    {
+      amount: '12121.23',
+      base: 'BTC',
+      currency: 'USD',
+      timestamp: new Date(),
+    },
+  ];
 
-describe('tteesstt', () => {
-  it('should run', () => {
-    expect(1).toBe(1);
+  const wrapper = mount(<Chart fetchedData={mockData} />);
+  it('should render a Plot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });
