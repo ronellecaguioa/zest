@@ -2,7 +2,7 @@ import React from 'react';
 import { Data } from '../types';
 
 export interface CurrentProps {
-  current: Data;
+  current?: Data;
 }
 
 /**
