@@ -1,21 +1,27 @@
-// import React from 'react';
-// import { configure, shallow } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import 'jest-canvas-mock';
 
-// import App from '../../src/App';
+import App from '../../src/App';
 
-// configure({ adapter: new Adapter() });
+jest.unmock('plotly.js');
+jest.unmock('../../src/App');
+// jest.unmock('./stylesheets/index.scss')
 
-// describe('<App />', () => {
-//   const wrapper = shallow(<App />);
+configure({ adapter: new Adapter() });
 
-//   it('Renders a div tag', () => {
-//     expect(wrapper.type()).toEqual('div');
-//   });
-// });
+describe('<App />', () => {
+  const wrapper = shallow(<App />);
+  it('should render header with a title "Bitcoin Prices"', () => {
+    expect(wrapper.find('header').length).toEqual(1);
+    expect(wrapper.find('header').childAt(0).text()).toEqual('Bitcoin Prices');
+  });
 
-describe('test', () => {
-  it('should', () => {
-    expect(1).toBe(1);
+  it('should render a main html element with two div tags', () => {
+    const main = wrapper.find('main');
+    expect(main.length).toEqual(1);
+    expect(main.childAt(0).hasClass('chart')).toEqual(true);
+    expect(main.childAt(1).hasClass('metrics')).toEqual(true);
   });
 });
