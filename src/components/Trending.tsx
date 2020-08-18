@@ -78,7 +78,9 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
           <h4>HIGH</h4>
           <p>
             {max
-              ? `$${max.amount.toLocaleString()} at ${max.timestamp.toLocaleTimeString()}`
+              ? `${max.amount} ${
+                  max.currency
+                } ${max.timestamp.toLocaleTimeString()}`
               : 'Loading'}
           </p>
         </div>
@@ -86,7 +88,9 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
           <h4>LOW</h4>
           <p>
             {min
-              ? `$${min.amount} at ${min.timestamp.toLocaleTimeString()}`
+              ? `${min.amount} ${
+                  min.currency
+                } ${min.timestamp.toLocaleTimeString()}`
               : 'Loading'}
           </p>
         </div>

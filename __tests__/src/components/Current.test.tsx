@@ -22,8 +22,8 @@ describe('<Current />', () => {
     expect(wrapper.find('div').first().hasClass('current')).toEqual(true);
   });
 
-  it("should render a span with '$12121.23'", () => {
-    expect(wrapper.find('span').at(1).text()).toEqual('$12121.23');
+  it("should render a span with '12121.23 USD'", () => {
+    expect(wrapper.find('span').at(1).text()).toEqual('12121.23 USD');
   });
 
   it("should render 'Loading' when current is null", () => {
