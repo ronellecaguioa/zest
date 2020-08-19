@@ -12,6 +12,7 @@ jest.unmock('../../../src/components/Chart');
 configure({ adapter: new Adapter() });
 
 describe('<Chart />', () => {
+  // Mock fetched data
   const mockData: Data[] = [
     {
       amount: '12121.23',
@@ -21,7 +22,9 @@ describe('<Chart />', () => {
     },
   ];
 
-  const wrapper = mount(<Chart fetchedData={mockData} />);
+  const wrapper = mount(
+    <Chart fetchedData={mockData} min={mockData[0]} max={mockData[0]} />
+  );
   it('should render a Plot', () => {
     expect(wrapper).toMatchSnapshot();
   });
