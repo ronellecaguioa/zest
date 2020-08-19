@@ -70,7 +70,6 @@ const Trending: React.SFC<TrendingProps> = ({
     <div className="trending">
       <h3 className={isTrending ? 'up' : 'down'}>
         <img
-          className={isTrending ? 'up' : 'down'}
           src={
             isTrending
               ? 'https://img.icons8.com/ios-glyphs/30/000000/sort-up.png'
