@@ -8,6 +8,8 @@ import './stylesheets/App.scss';
 
 const App: React.FC = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
+  const [min, setMin] = useState<Data | null>(null);
+  const [max, setMax] = useState<Data | null>(null);
 
   /**
    * Fetches bitcoin data from coinbase API and adds a timestamp to
@@ -36,10 +38,16 @@ const App: React.FC = () => {
       </header>
       <main>
         <div className="chart">
-          <Chart fetchedData={fetchedData} />
+          <Chart fetchedData={fetchedData} min={min} max={max} />
         </div>
         <div className="metrics">
-          <Trending fetchedData={fetchedData} />
+          <Trending
+            fetchedData={fetchedData}
+            setMin={setMin}
+            setMax={setMax}
+            min={min}
+            max={max}
+          />
           <Current current={fetchedData[fetchedData.length - 1]} />
         </div>
       </main>

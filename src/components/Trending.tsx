@@ -5,13 +5,21 @@ import '../stylesheets/Trending.scss';
 
 export interface TrendingProps {
   fetchedData: Data[];
+  setMin: React.Dispatch<React.SetStateAction<Data | null>>;
+  setMax: React.Dispatch<React.SetStateAction<Data | null>>;
+  min: Data | null;
+  max: Data | null;
 }
 
-const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
+const Trending: React.SFC<TrendingProps> = ({
+  fetchedData,
+  setMin,
+  setMax,
+  min,
+  max,
+}) => {
   const [isTrending, setIsTrending] = useState<boolean | null>(null);
   const [trendVal, setTrendVal] = useState('');
-  const [min, setMin] = useState<Data | null>(null);
-  const [max, setMax] = useState<Data | null>(null);
 
   /**
    * Helper function to store the min and max data points
@@ -62,7 +70,6 @@ const Trending: React.SFC<TrendingProps> = ({ fetchedData }) => {
     <div className="trending">
       <h3 className={isTrending ? 'up' : 'down'}>
         <img
-          className={isTrending ? 'up' : 'down'}
           src={
             isTrending
               ? 'https://img.icons8.com/ios-glyphs/30/000000/sort-up.png'
