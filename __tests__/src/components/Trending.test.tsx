@@ -8,20 +8,6 @@ import { Data } from '../../../src/types';
 configure({ adapter: new Adapter() });
 
 describe('<Trending />', () => {
-  // Required props for <Trending /> component
-  const [min, setMin] = useState<Data | null>({
-    amount: '12121.23',
-    base: 'BTC',
-    currency: 'USD',
-    timestamp: new Date(),
-  });
-  const [max, setMax] = useState<Data | null>({
-    amount: '12200.23',
-    base: 'BTC',
-    currency: 'USD',
-    timestamp: new Date(),
-  });
-
   // Mock fetched data
   const mockData: Data[] = [
     {
@@ -41,10 +27,10 @@ describe('<Trending />', () => {
   const wrapper = shallow(
     <Trending
       fetchedData={mockData}
-      min={min}
-      max={max}
-      setMin={setMin}
-      setMax={setMax}
+      min={mockData[0]}
+      max={mockData[1]}
+      setMin={jest.fn()}
+      setMax={jest.fn()}
     />
   );
 
@@ -56,7 +42,9 @@ describe('<Trending />', () => {
     expect(wrapper.find('h3').hasClass('down')).toEqual(true);
   });
 
-  it("should display 'Loading' while data loads", () => {
-    expect(wrapper.find('.high').childAt(1).text()).toEqual('Loading');
+  it("should display '12200.23'", () => {
+    expect(wrapper.find('.high').childAt(1).text().split(' ')[0]).toEqual(
+      '12200.23'
+    );
   });
 });
