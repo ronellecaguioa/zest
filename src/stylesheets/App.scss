@@ -58,6 +58,11 @@ body {
         box-shadow: $boxshadow;
         background: darken(#fff, 5%);
         border-radius: 3px;
+        transition: 0.2s;
+
+        &:hover {
+          background: #fff;
+        }
       }
     }
   }
